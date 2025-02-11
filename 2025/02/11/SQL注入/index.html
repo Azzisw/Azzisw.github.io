@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="昊の米奇妙妙屋">
+    <meta name="keywords" content="SQL注入, 昊の米奇妙妙屋">
     <meta name="description" content="SQL注入（SQL Injection）是一种常见的Web安全漏洞，形成的主要原因是web应用程序在接收相关数据参数时未做好过滤，将其直接带入到数据库中查询，导致攻击者可以拼接执行构造的SQL语句。	数字型语句：select * from ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>昊の米奇妙妙屋</title>
+    <title>SQL注入 | 昊の米奇妙妙屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -341,12 +341,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">SQL注入</h1>
                 </div>
             </div>
         </div>
@@ -403,13 +403,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>SQL注入（SQL Injection）是一种常见的Web安全漏洞，形成的主要原因是web应用程序在接收相关数据参数时未做好过滤，将其直接带入到数据库中查询，导致攻击者可以拼接执行构造的SQL语句。<br>	数字型语句：select * from table where id &#x3D;3<br>	字符型语句：select * from table where name&#x3D;’admin’</p>
-<h1 id="漏洞产生原因"><a href="#漏洞产生原因" class="headerlink" title="漏洞产生原因"></a><strong>漏洞产生原因</strong></h1><pre><code># 1. 没有对输入框进行限制  
-# 2. 直接使用url传递变量  
-# 3. 未过滤特殊字符
-# 4. sql错误回显
-</code></pre>
-<h1 id="攻击方式"><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h1><h2 id="UNION-query-SQL-injection（联合查询注入）"><a href="#UNION-query-SQL-injection（联合查询注入）" class="headerlink" title="UNION query SQL injection（联合查询注入）"></a>UNION query SQL injection（联合查询注入）</h2><pre><code>联合查询适合于有显示位的注入，即页面某个位置会根据我们输入的数据的变化而变化，有注入点时页面会根据输入的数据变化而变化，当存在注入点时，优先考虑使用联合注入手法。
+                <p>SQL注入（SQL Injection）是一种常见的Web安全漏洞，形成的主要原因是web应用程序在接收相关数据参数时未做好过滤，将其直接带入到数据库中查询，导致攻击者可以拼接执行构造的SQL语句。<br>	数字型语句：select * from table where id &#x3D;3<br>	字符型语句：select * from table where name&#x3D;’admin’<br> <strong>漏洞产生原因</strong><br>	 1. 没有对输入框进行限制<br>	 2. 直接使用url传递变量<br>	 3. 未过滤特殊字符<br>	 4. sql错误回显<br> 攻击方式</p>
+<h2 id="UNION-query-SQL-injection（联合查询注入）"><a href="#UNION-query-SQL-injection（联合查询注入）" class="headerlink" title="UNION query SQL injection（联合查询注入）"></a>UNION query SQL injection（联合查询注入）</h2><pre><code>联合查询适合于有显示位的注入，即页面某个位置会根据我们输入的数据的变化而变化，有注入点时页面会根据输入的数据变化而变化，当存在注入点时，优先考虑使用联合注入手法。
 ?id=-1&#39; union select 1,2,database() --+`==`
 ?id=-1&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() --+`==`
 </code></pre>
@@ -474,7 +469,7 @@ X-forwarded-For
 **堆叠查询的局限性**
 	堆叠注入的局限性在于并不是每一个环境下都可以执行，可能受到API或者数据库引擎不支持的限制，当然了权限不足也可以解释为什么攻击者无法修改数据或者调用一些程序。虽然我们前面提到了堆叠查询可以执行任意的sql语句，但是这种注入方式并不是十分的完美的。在我们的web系统中，因为代码通常只返回一个查询结果，因此，堆叠注入第二个语句产生错误或者结果只能被忽略，我们在前端界面是无法看到返回结果的。如上面的实例如果我们不输出密码那我们是看不到这个结果的。因此，在读取数据时，我们建议使用union（联合）注入。同时在使用堆叠注入之前，我们也是需要知道一些数据库相关信息的，例如表名，列名等信息
 </code></pre>
-<h2 id="二阶注入"><a href="#二阶注入" class="headerlink" title="二阶注入"></a>二阶注入</h2><pre><code>二次注入漏洞是一种在Web应用程序中广泛存在的安全漏洞形式。相对于一次注入漏洞而言，二次注入漏洞更难以被发现，但是它却具有与—次注入攻击漏洞相同的攻击威力。
+<h1 id="二阶注入"><a href="#二阶注入" class="headerlink" title="二阶注入"></a>二阶注入</h1><pre><code>二次注入漏洞是一种在Web应用程序中广泛存在的安全漏洞形式。相对于一次注入漏洞而言，二次注入漏洞更难以被发现，但是它却具有与—次注入攻击漏洞相同的攻击威力。
 	1.黑客通过构造数据的形式，在浏览器或者其他软件中提交HTTP数据报文请求到服务端进行处理，提交的数据报文请求中可能包含了黑客构造的SQL语句或者命令。
 	2.服务端应用程序会将黑客提交的数据信息进行存储，通常是保存在数据库中，保存的数据信息的主要作用是为应用程序执行其他功能提供原始输入数据并对客户端请求做出响应。
 	3.黑客向服务端发送第二个与第一次不相同的请求数据信息。
@@ -631,9 +626,9 @@ X-forwarded-For
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="XSS">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">XSS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

