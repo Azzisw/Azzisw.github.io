@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="XSS, 昊の米奇妙妙屋">
-    <meta name="description" content="XSS又叫CSS（Cross Site Script）跨站脚本攻击是指恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。
-1.攻击者对含有漏洞的服">
+    <meta name="description" content="1234XSS又叫CSS（Cross Site Script）跨站脚本攻击是指恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。1.攻击者对含有漏">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -404,17 +403,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre><code>XSS又叫CSS（Cross Site Script）跨站脚本攻击是指恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。
-1.攻击者对含有漏洞的服务器发起XSS攻击（注入JS代码）。
-2.诱使受害者打开受到攻击的服务器URL。
-3.受害者在Web浏览器中打开URL，恶意脚本执行。
-</code></pre>
-<h1 id="攻击类型"><a href="#攻击类型" class="headerlink" title="攻击类型"></a>攻击类型</h1><h2 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h2><pre><code>&lt;非持久化&gt; 攻击者事先制作好攻击链接, 需要欺骗用户自己去点击链接才能触发XSS代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。一般是后端代码进行处理
-</code></pre>
-<h2 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h2><pre><code>&lt;持久化&gt; 代码是存储在服务器数据库中的，如在个人信息或发表文章等地方，加入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，每当有用户访问该页面的时候都会触发代码执行，这种XSS非常危险，容易造成蠕虫，大量盗窃cookie（虽然还有种DOM型XSS，但是也还是包括在存储型XSS内）。
-</code></pre>
-<h2 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h2><pre><code>基于文档对象模型Document Objeet Model，DOM)的一种漏洞。DOM是一个与平台、编程语言无关的接口，它允许程序或脚本动态地访问和更新文档内容、结构和样式，处理后的结果能够成为显示页面的一部分。DOM中有很多对象，其中一些是用户可以操纵的，如uRI ，location，refelTer等。客户端的脚本程序可以通过DOM动态地检查和修改页面内容，它不依赖于提交数据到服务器端，而从客户端获得DOM中的数据在本地执行，如果DOM中的数据没有经过严格确认，就会产生DOM XSS漏洞。一般是浏览器前端代码进行处理。
-</code></pre>
+                <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">XSS又叫CSS（Cross Site Script）跨站脚本攻击是指恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。</span><br><span class="line">1.攻击者对含有漏洞的服务器发起XSS攻击（注入JS代码）。</span><br><span class="line">2.诱使受害者打开受到攻击的服务器URL。</span><br><span class="line">3.受害者在Web浏览器中打开URL，恶意脚本执行。</span><br></pre></td></tr></table></figure>
+<h1 id="攻击类型"><a href="#攻击类型" class="headerlink" title="攻击类型"></a>攻击类型</h1><h2 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;非持久化&gt; 攻击者事先制作好攻击链接, 需要欺骗用户自己去点击链接才能触发XSS代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。一般是后端代码进行处理</span><br></pre></td></tr></table></figure>
+<h2 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;持久化&gt; 代码是存储在服务器数据库中的，如在个人信息或发表文章等地方，加入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，每当有用户访问该页面的时候都会触发代码执行，这种XSS非常危险，容易造成蠕虫，大量盗窃cookie（虽然还有种DOM型XSS，但是也还是包括在存储型XSS内）。</span><br></pre></td></tr></table></figure>
+<h2 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">基于文档对象模型Document Objeet Model，DOM)的一种漏洞。DOM是一个与平台、编程语言无关的接口，它允许程序或脚本动态地访问和更新文档内容、结构和样式，处理后的结果能够成为显示页面的一部分。DOM中有很多对象，其中一些是用户可以操纵的，如uRI ，location，refelTer等。客户端的脚本程序可以通过DOM动态地检查和修改页面内容，它不依赖于提交数据到服务器端，而从客户端获得DOM中的数据在本地执行，如果DOM中的数据没有经过严格确认，就会产生DOM XSS漏洞。一般是浏览器前端代码进行处理。</span><br></pre></td></tr></table></figure>
 <h2 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h2><pre><code>1.挂马
 2.盗取用户Cookie。
 3.DOS（拒绝服务）客户端浏览器。
@@ -425,22 +417,7 @@
 8.蠕虫式的DDoS攻击。
 9.蠕虫式挂马攻击、刷广告、刷浏量、破坏网上数据
 </code></pre>
-<h2 id="XSS攻击常见标签与属性"><a href="#XSS攻击常见标签与属性" class="headerlink" title="XSS攻击常见标签与属性"></a>XSS攻击常见标签与属性</h2><pre><code class="language-1.scirpt">&lt;script&gt;alert(1);&lt;/script&gt;
-&lt;script&gt;alert(&quot;xss&quot;);&lt;/script&gt;``
-2.img 标签（&lt;img&gt;标签定义 HTML 页面中的图像）
-&lt;img src=1 onerror=alert(1);&gt;
-&lt;img src=1 onerror=alert(&quot;xss&quot;);&gt;
-3.input 标签(&lt;input&gt; 标签规定了用户可以在其中输入数据的输入字段。)
-onfocus 事件在对象获得焦点时发生：
-&lt;input onfocus=alert(1);&gt;
-&lt;input onblur=alert(1) autofocus&gt;&lt;input autofocus&gt;
-&quot; οnclick=alert(1)&gt; 这样需要点击一下输入框&lt;br&gt; 
-&quot; onmouseover=alert(1)&gt; 需要鼠标划过输入框&lt;br&gt;
-4.details 标签(&lt;details&gt; 标签通过提供用户开启关闭的交互式控件，规定了用户可见的或者隐藏的需求的补充细节。ontoggle 事件规定了在用户打开或关闭 &lt;details&gt; 元素时触发)
-&lt;details ontoggle=alert(1);&gt;)
-&lt;details open ontoggle=alert(1);&gt;
-使用details 标签的 open 属性触发ontoggle事件，无需用户去点击即可触发```
-</code></pre>
+<h2 id="XSS攻击常见标签与属性"><a href="#XSS攻击常见标签与属性" class="headerlink" title="XSS攻击常见标签与属性"></a>XSS攻击常见标签与属性</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">```1.scirpt 标签（&lt;script&gt;标签用于定义客户端脚本，比如JavaScript）</span><br><span class="line">&lt;script&gt;alert(1);&lt;/script&gt;</span><br><span class="line">&lt;script&gt;alert(&quot;xss&quot;);&lt;/script&gt;``</span><br><span class="line">2.img 标签（&lt;img&gt;标签定义 HTML 页面中的图像）</span><br><span class="line">&lt;img src=1 onerror=alert(1);&gt;</span><br><span class="line">&lt;img src=1 onerror=alert(&quot;xss&quot;);&gt;</span><br><span class="line">3.input 标签(&lt;input&gt; 标签规定了用户可以在其中输入数据的输入字段。)</span><br><span class="line">onfocus 事件在对象获得焦点时发生：</span><br><span class="line">&lt;input onfocus=alert(1);&gt;</span><br><span class="line">&lt;input onblur=alert(1) autofocus&gt;&lt;input autofocus&gt;</span><br><span class="line">&quot; οnclick=alert(1)&gt; 这样需要点击一下输入框&lt;br&gt; </span><br><span class="line">&quot; onmouseover=alert(1)&gt; 需要鼠标划过输入框&lt;br&gt;</span><br><span class="line">4.details 标签(&lt;details&gt; 标签通过提供用户开启关闭的交互式控件，规定了用户可见的或者隐藏的需求的补充细节。ontoggle 事件规定了在用户打开或关闭 &lt;details&gt; 元素时触发)</span><br><span class="line">&lt;details ontoggle=alert(1);&gt;)</span><br><span class="line">&lt;details open ontoggle=alert(1);&gt;</span><br><span class="line">使用details 标签的 open 属性触发ontoggle事件，无需用户去点击即可触发```</span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -467,7 +444,7 @@ onfocus 事件在对象获得焦点时发生：
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2025/02/11/XSS/">http://example.com/2025/02/11/XSS/</a>
+                    <a href="http://Azzisw.github.io/2025/02/11/XSS/">http://Azzisw.github.io/2025/02/11/XSS/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -556,9 +533,9 @@ onfocus 事件在对象获得焦点时发生：
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">Docker</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
